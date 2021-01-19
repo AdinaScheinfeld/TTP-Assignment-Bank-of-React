@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Home from './components/Home';
-import UserProfile from './components/UserProfile';
-import LogIn from './components/LogIn'
+import { Home, LogIn, UserProfile, Debits, Credits} from './components/index';
 
 class App extends Component {
 
@@ -38,13 +36,21 @@ class App extends Component {
     // create a reference to a LogIn component
     const LogInComponent = () => ( <LogIn user={ this.state.currentUser } mockLogIn={ this.mockLogIn } {...this.props} />);
 
+    // create a reference to a Debits component
+      const DebitsComponent = () => ( <Debits /> );
+
+    // create a reference to a Credits component
+    const CreditsComponent = () => ( <Credits /> );
+
     return ( 
       <Router>
-        <div>
+        <Switch>
           <Route exact path='/' render={ HomeComponent } />
           <Route exact path='/userProfile' render={ UserProfileComponent } />
           <Route exact path='/logIn' render={ LogInComponent } />
-        </div>
+          <Route exact path='/debits' render={ DebitsComponent } />
+          <Route exact path='/credits' render={ CreditsComponent } />
+        </Switch>
       </Router>
      );
   }

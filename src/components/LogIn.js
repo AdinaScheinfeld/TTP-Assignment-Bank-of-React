@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
-class Login extends Component {
+class LogIn extends Component {
 
     // constructor
     constructor() {
@@ -40,7 +40,13 @@ class Login extends Component {
         }
 
         return ( 
+
             <div>
+                <div className='navBar'>
+                    <Link to='/'>Home</Link>
+                    <Link to='/logIn'>Log In</Link>
+                </div>
+
                 <form onSubmit={ this.handleSubmit }>
                     <div>
                         <label htmlFor='userName'>User Name</label>
@@ -57,4 +63,4 @@ class Login extends Component {
     }
 }
  
-export default Login;
+export default LogIn;
