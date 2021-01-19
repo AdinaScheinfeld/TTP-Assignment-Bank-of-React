@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Home, LogIn, UserProfile, Debits, Credits} from './components/index';
 
@@ -13,8 +14,15 @@ class App extends Component {
       currentUser: {
         userName: 'bob_loblaw',
         memberSince: '08/23/99'
-      }
+      },
+      debits: [],
+      credits: []
     }
+  }
+
+  // method to execute when component mounts
+  componentDidMount = () => {
+    this.getDebits();
   }
 
   // method to process a mock login
@@ -22,6 +30,21 @@ class App extends Component {
     const newUser = {...this.state.currentUser};
     newUser.userName = logInInfo.userName;
     this.setState({ currentUser: newUser });
+  }
+
+  // method to get debits from api
+  getDebits = () => {
+    axios.get('https://moj-api.herokuapp.com/debits')
+    .then(response => {
+      this.setState({ debits: response.data});
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  }
+
+  updateDebits = () => {
+    console.log('update Debits');
   }
 
   // render App component
@@ -37,7 +60,14 @@ class App extends Component {
     const LogInComponent = () => ( <LogIn user={ this.state.currentUser } mockLogIn={ this.mockLogIn } {...this.props} />);
 
     // create a reference to a Debits component
-      const DebitsComponent = () => ( <Debits /> );
+    const DebitsComponent = () => ( 
+      <Debits 
+        accountBalance={ this.state.accountBalance } 
+        currentDebits={ this.state.debits }
+        updateDebits={ this.updateDebits }
+
+      /> 
+    );
 
     // create a reference to a Credits component
     const CreditsComponent = () => ( <Credits /> );
