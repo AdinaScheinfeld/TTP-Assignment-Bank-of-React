@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { UserNav } from './index';
 
 class UserProfile extends Component {
 
@@ -7,13 +7,7 @@ class UserProfile extends Component {
     render() { 
         return ( 
             <div>
-                <div className='navBar'>
-                    <Link to='/userProfile'>Profile</Link>
-                    <Link to='/debits'>Debits</Link>
-                    <Link to='credits'>Credits</Link>
-                    <Link to='/'>Sign Out</Link>
-                </div>
-
+                <UserNav />
                 <h1>User Profile</h1>
                 <div>Username: { this.props.userName }</div>
                 <div>Member Since: {this.props.memberSince }</div>

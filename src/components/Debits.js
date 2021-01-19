@@ -1,19 +1,30 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { UserNav } from './index';
+import { Debit } from './index';
 
 class Debits extends Component {
+
+    // constructor
+    constructor(props) {
+        super(props);
+        console.log(this.props.currentDebits);
+    }
 
     // render Debits component
     render() { 
         return ( 
             <div className='container'>
-                <div className='navBar'>
-                    <Link to='/userProfile'>Profile</Link>
-                    <Link to='/debits'>Debits</Link>
-                    <Link to='credits'>Credits</Link>
-                    <Link to='/'>Sign Out</Link>
-                </div>
-                <h4>Debits</h4>        
+                <UserNav />
+                <h1>Debits</h1>  
+                
+                {this.props.currentDebits.map((item, index) => (
+                    <Debit 
+                        key={ item.index } 
+                        description={ item.description } 
+                        amount={ item.amount } 
+                        date={ item.date} 
+                    />
+                ))}   
             </div>
 
          );
