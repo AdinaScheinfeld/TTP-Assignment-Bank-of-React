@@ -13,7 +13,7 @@ class Home extends Component {
                     <Link to='/logIn' className='link'>Log In</Link>
                 </div>
                 <h1>Welcome to the Bank of React</h1>
-                <h3>Please log in using the link above</h3>
+                <h3>Please log in using the link in the navigation bar above</h3>
             </div>
          );
     }

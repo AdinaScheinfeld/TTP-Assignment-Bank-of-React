@@ -1,16 +1,21 @@
 import React, { Component } from 'react';
 import { UserNav } from './index';
+import './UserProfile.css';
 
 class UserProfile extends Component {
 
     // render UserProfile component
     render() { 
         return ( 
-            <div>
+            <div className='container'>
                 <UserNav />
-                <h1>User Profile</h1>
-                <div>Username: { this.props.userName }</div>
-                <div>Member Since: {this.props.memberSince }</div>
+                <div className='userContainer'>
+                    <div className='profile'>
+                        <h1>User Profile</h1>
+                        <h2>Username: { this.props.userName }</h2>
+                        <h2>Member Since: {this.props.memberSince }</h2>                
+                    </div>
+                </div>
             </div>
          );
     }
