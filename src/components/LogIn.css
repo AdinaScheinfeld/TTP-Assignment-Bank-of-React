@@ -1,0 +1,46 @@
+body {
+    background-color: rgb(19, 47, 80);
+}
+
+form {
+    text-align: center;
+    padding-top: 25px;
+}
+
+.field {
+    margin-top: 15px;
+}
+
+button {
+    padding: 10px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    margin-top: 15px;
+}
+
+.navBar {
+    background-color: darkgreen;
+    padding-top: 15px;
+    height: 36px;
+    text-align: left;
+}
+
+.link {
+    padding: 15px;
+    color:white;
+    text-decoration: none;
+}
+
+.link:hover {
+    background-color: white;
+    color:rgb(19, 47, 80);
+}
+
+.link:active {
+    background-color: orange;
+    color:rgb(19, 47, 80);
+}
+
+label {
+    color: white;
+}
