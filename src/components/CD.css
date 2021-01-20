@@ -1,0 +1,37 @@
+.debitCards {
+    margin-left: 40px;
+}
+
+.creditCards {
+    margin-left: 40px;
+}
+
+h1 {
+    margin-left: 40px;
+}
+
+h2 {
+    color: white;
+    margin-left: 40px;
+}
+
+.add {
+    margin: 0;
+    background-color: gray;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+p {
+    font-weight: bold;
+    font-size:larger;
+    color: white;
+}
+
+label {
+    padding-left: 20px;
+}
+
+button {
+    margin-left: 20px;
+}

@@ -1,4 +1,5 @@
 import React from 'react';
+import './CDCard.css';
 
 const CDCard = ( props ) => {
     return ( 
