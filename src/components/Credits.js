@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { UserNav } from './index';
 import { CDCard } from './index';
+import './Home.css'
 
 class Credits extends Component {
 

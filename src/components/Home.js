@@ -7,15 +7,13 @@ class Home extends Component {
     // render Home component
     render() { 
         return ( 
-            <div>
+            <div className='home'>
                 <div className='navBar'>
-                    <Link to='/'>Home</Link>
-                    <Link to='/logIn'>Log In</Link>
+                    <Link to='/' className='link'>Home</Link>
+                    <Link to='/logIn' className='link'>Log In</Link>
                 </div>
-                <img src='https://letstalkpayments.com/wp-content/uploads/2016/04/Bank.png' alt='bank' />
-                <h1>Bank of React</h1>
-
-                <AccountBalance accountBalance={ this.props.accountBalance } />
+                <h1>Welcome to the Bank of React</h1>
+                <h3>Please log in using the link above</h3>
             </div>
          );
     }
