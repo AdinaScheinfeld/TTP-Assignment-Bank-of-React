@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import AccountBalance from './AccountBalance';
 import { UserNav } from './index';
-import { Debit } from './index';
+import { CDCard } from './index';
 
 class Debits extends Component {
 
@@ -22,7 +21,6 @@ class Debits extends Component {
     // method to get the cost of a new debit
     getDebitCost = event => {
         this.setState({ newDebitCost: event.target.value });
-        console.log(this.state.newDebitCost);
     }
 
     // method to add a debit
@@ -35,7 +33,6 @@ class Debits extends Component {
             date: newDate
         };
         this.props.updateDebits(debitObj);
-        console.log(this.props.accountBalance.toFixed(2));
     }
 
     // render Debits component
@@ -69,9 +66,9 @@ class Debits extends Component {
                     </form>
                 </div>
 
-                <div>
+                <div className='debitCards'>
                     { this.props.currentDebits.map((item, index) => (
-                    <Debit 
+                    <CDCard 
                         key={ index } 
                         description={ item.description } 
                         amount={ item.amount } 

@@ -23,6 +23,7 @@ class App extends Component {
   // method to execute when component mounts
   componentDidMount = () => {
     this.getDebits();
+    this.getCredits();
   }
 
   // method to process a mock login
@@ -43,17 +44,37 @@ class App extends Component {
     })
   }
 
+  // method to get credits from api
+  getCredits = () => {
+    axios.get('https://moj-api.herokuapp.com/credits')
+    .then(response => {
+      this.setState({ credits: response.data});
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  }
+
   // method to update debits with new debit from Debits component
   updateDebits = (newDebit) => {
     let arr=this.state.debits;
-    arr.push(newDebit);
-    console.log(arr);
+    arr.unshift(newDebit);
 
     this.setState({ 
       debits: arr,
       accountBalance: this.state.accountBalance-newDebit.amount
-    })
-    console.log(this.state.accountBalance.toFixed(2));
+    });
+  }
+
+  // method to update credits with new credit from Credits component
+  updateCredits = (newCredit) => {
+    let arr=this.state.credits;
+    arr.unshift(newCredit);
+
+    this.setState({
+      credits: arr,
+      accountBalance: this.state.accountBalance+newCredit.amount
+    });
   }
 
   // render App component
@@ -61,12 +82,23 @@ class App extends Component {
 
     // create a reference to a Home component
     const HomeComponent = () => ( <Home accountBalance={ this.state.accountBalance } /> );
+    
     // create a reference to a UserProfile component
     const UserProfileComponent = () => (
-      <UserProfile userName={ this.state.currentUser.userName } memberSince={ this.state.currentUser.memberSince } />
+      <UserProfile 
+        userName={ this.state.currentUser.userName } 
+        memberSince={ this.state.currentUser.memberSince } 
+      />
     );
+
     // create a reference to a LogIn component
-    const LogInComponent = () => ( <LogIn user={ this.state.currentUser } mockLogIn={ this.mockLogIn } {...this.props} />);
+    const LogInComponent = () => ( 
+      <LogIn 
+        user={ this.state.currentUser } 
+        mockLogIn={ this.mockLogIn } 
+        {...this.props} 
+      />
+    );
 
     // create a reference to a Debits component
     const DebitsComponent = () => ( 
@@ -78,7 +110,13 @@ class App extends Component {
     );
 
     // create a reference to a Credits component
-    const CreditsComponent = () => ( <Credits /> );
+    const CreditsComponent = () => (
+      <Credits
+        accountBalance={ this.state.accountBalance }
+        currentCredits={ this.state.credits }
+        updateCredits={ this.updateCredits }
+      />
+    );
 
     return ( 
       <Router>

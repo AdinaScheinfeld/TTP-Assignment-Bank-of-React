@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Debit = ( props ) => {
+const CDCard = ( props ) => {
     return ( 
         <div className='container'>
             <div className='card'>
@@ -12,4 +12,4 @@ const Debit = ( props ) => {
      );
 }
  
-export default Debit;
+export default CDCard;
