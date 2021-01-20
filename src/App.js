@@ -43,8 +43,17 @@ class App extends Component {
     })
   }
 
-  updateDebits = () => {
-    console.log('update Debits');
+  // method to update debits with new debit from Debits component
+  updateDebits = (newDebit) => {
+    let arr=this.state.debits;
+    arr.push(newDebit);
+    console.log(arr);
+
+    this.setState({ 
+      debits: arr,
+      accountBalance: this.state.accountBalance-newDebit.amount
+    })
+    console.log(this.state.accountBalance.toFixed(2));
   }
 
   // render App component
@@ -65,7 +74,6 @@ class App extends Component {
         accountBalance={ this.state.accountBalance } 
         currentDebits={ this.state.debits }
         updateDebits={ this.updateDebits }
-
       /> 
     );
 
